@@ -1,0 +1,143 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Trúc Hub | vật tay", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+
+--values
+
+_G.autofarm = true
+_G.autopunch = true
+_G.autobuy = true
+_G.autowin = true
+_G.autowin1 = true
+_G.egg700win = true
+_G.reset = true
+
+
+
+--function
+
+function autofarm()
+  while _G.autofarm == true do
+   game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ToolService.RE.onClick:FireServer()
+
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ToolService.RE.onGuiEquipRequest:FireServer("1","Dumbells","250Kg")
+    wait(.000001)
+  end
+end
+
+function autopunch()
+  while _G.autopunch == true do
+   game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.PunchBagService.RE.onGiveStats:FireServer("1","Tier5")
+    wait(.000001)
+  end
+end
+
+function autobuy()
+  while _G.autobuy == true do
+   game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ToolService.RE.onGuiEquipRequest:FireServer("1","Dumbells","250Kg")
+    wait(.000001)
+  end
+end
+
+function autowin()
+  while _G.autowin == true do
+   game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ArmWrestleService.RE.onClickRequest:FireServer()
+
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ArmWrestleService.RE.onEnterNPCTable:FireServer("Champion",workspace.Zones["1"].Interactables.ArmWrestling.NPC.Champion.Table,"1")
+    wait(.000001)
+  end
+end
+
+function autowin1()
+  while _G.autowin1 == true do
+   game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ArmWrestleService.RE.onClickRequest:FireServer()
+
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ArmWrestleService.RE.onEnterNPCTable:FireServer("MafiaBoss",workspace.Zones["1"].Interactables.ArmWrestling.NPC.MafiaBoss.Table,"1")
+    wait(.000001)
+    end
+end
+
+function egg700win()
+  while _G.egg700win == true do
+   game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.EggService.RF.purchaseEgg:InvokeServer("Blackhole",{})
+    wait(.000001)
+  end
+end
+
+function reset()
+  while _G.reset == true do
+   game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.RebirthService.RE.onRebirthRequest:FireServer()
+    wait(.000001)
+  end
+end
+    
+  
+--Tab
+
+local farmTab = Window:MakeTab({
+	Name = "Auto Farm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local buyTab = Window:MakeTab({
+	Name = "Auto Buy",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--toggle
+
+farmTab:AddToggle({
+	Name = "Auto Farm",
+	Default = false,
+	Callback = function (value)
+    _G.autofarm = value
+      autofarm()
+	end    
+})
+
+farmTab:AddToggle({
+	Name = "Auto Punch",
+	Default = false,
+	Callback = function (value)
+    _G.autopunch = value
+      autopunch()
+	end    
+})
+
+farmTab:AddToggle({
+	Name = "Auto Win [Boss💀]",
+	Default = false,
+	Callback = function (value)
+    _G.autowin = value
+      autowin()
+    end    
+})
+
+farmTab:AddToggle({
+	Name = "Auto Win [mafia]",
+	Default = false,
+	Callback = function (value)
+    _G.autowin1 = value
+      autowin1()
+    end    
+})
+
+buyTab:AddToggle({
+	Name = "Làm lại cuộc đời",
+	Default = false,
+	Callback = function (value)
+    _G.reset = value
+      reset()
+    end    
+})
+
+buyTab:AddToggle({
+	Name = "Mua Trứng [700 win]",
+	Default = false,
+	Callback = function (value)
+    _G.egg700win = value
+      egg700win()
+    end    
+})
